@@ -4,11 +4,16 @@ DONE -> El nombre de usuario debería ser de dos caracteres mínimo
 DONE -> Round en los scores
 DONE -> refactor: Player.find(:all, :conditions => ["match_id = ?", @match.id], :order => "score desc") -> en el controller
 DONE -> User Profile Edition
+IMPORTANT -> env PATH=/Library/PostgreSQL/9.1/bin:$PATH gem install pg
 
+
+TEST PENDING -> 2 digits for users
 
 REGRESSION TEST
 
 El SessionBag deberia ser un accessor del ApplicationController
+
+
 
 http://www.ajaxbestiary.com/Labs/SilkSprite/
 https://github.com/joshuaclayton/blueprint-css/wiki/Plugins

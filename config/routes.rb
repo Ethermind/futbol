@@ -1,5 +1,4 @@
 Futbol::Application.routes.draw do
-  
   root :to => "home#index"
   
   get "home/index"
@@ -7,7 +6,6 @@ Futbol::Application.routes.draw do
   get "home/logout"
   get "home/signup"
   get "home/about"
-
   get "home/add_user_to_match"
   get "home/cancel_player_to_match"
   get "home/confirm_player_to_match"
@@ -18,6 +16,7 @@ Futbol::Application.routes.draw do
 
   match "users/login", :to => "users#login"
   match "matches/new_match", :to => "matches#new_match"
+
   resources :users
   resources :matches
     
