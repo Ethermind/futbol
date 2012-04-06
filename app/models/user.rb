@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_many :players
+  has_many :comments
   validates_presence_of :name, :message => "name can't be blank"
   validates_length_of :name, :minimum => 2, :too_short => "name should have at least 2 characters"
   validates_uniqueness_of :name, :message => "user already exists"

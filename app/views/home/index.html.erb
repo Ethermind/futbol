@@ -11,7 +11,6 @@
 <br />
 <br />
 <% if @match %>
-<% position = 0 %>
 <table border="0" cellspacing="0" cellpadding="0">
 	<caption>
 		<em>
@@ -62,5 +61,25 @@
 	</tbody>
 </table>
 <% end %>
-
-
+<br />
+<% if @match && @match.comments %>
+	<% @match.comments.each do |c| %>
+	<fieldset class = "notice">
+		<strong><%= c.message %></strong>
+		<br />
+		<small><%= c.user.name %> | <%= c.created_at %></small>
+	</fieldset>
+	<% end %>
+<% end %>
+<% if @match && @user %>
+	<%= form_for @comment, :url => home_add_comment_to_match_path do |f| %>
+	<fieldset class="notice">
+		<p>
+			<%= f.text_area :message, :class => "span-23" %>
+		</p>
+		<p>
+			<%= f.submit "Add comment", :disable_with => "..." %>
+		</p>
+	</fieldset>
+	<% end %>
+<% end %>

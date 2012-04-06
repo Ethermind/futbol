@@ -1,4 +1,4 @@
-TEST PENDING -> Evitar doble click
+DONE -> Evitar doble click
 DONE -> Un usuario no puede confirmar a otro usuario
 DONE -> El nombre de usuario debería ser de dos caracteres mínimo
 DONE -> Round en los scores

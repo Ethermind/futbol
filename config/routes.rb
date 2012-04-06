@@ -12,13 +12,16 @@ Futbol::Application.routes.draw do
   get "home/new_match"
   get "home/edit_match"
   get "home/edit_user"
+  get "home/add_comment_to_match"
   get "users/list"
 
   match "users/login", :to => "users#login"
   match "matches/new_match", :to => "matches#new_match"
+  match "home/add_comment_to_match", :to => "home#add_comment_to_match"
 
   resources :users
   resources :matches
+  resources :comments
     
   # The priority is based upon order of creation:
   # first created -> highest priority.

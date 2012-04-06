@@ -6,6 +6,7 @@ class HomeController < ApplicationController
     @match = Match.last
     @player = @match.players.find_by_user_id(@user.id) if @user
     @players = Player.find(:all, :conditions => ["match_id = ?", @match.id], :order => "score desc")
+    @comment = Comment.new
   end
   
   def login
@@ -58,6 +59,22 @@ class HomeController < ApplicationController
 
   def edit_user
     @user = User.find(params[:user])
+  end
+
+  def add_comment_to_match
+    match = Match.last
+    user = SessionBag.get_current_user(session)
+    comment = Comment.new(params[:comment])
+    comment.match = match
+    comment.user = user
+    match.comments << comment
+    user.comments << comment
+    
+    if !comment.save
+      SessionBag.set_error(flash, comment.errors.first[1])
+    end
+    
+    redirect_to root_url
   end
   
   private

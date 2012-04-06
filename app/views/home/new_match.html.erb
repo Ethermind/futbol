@@ -7,7 +7,7 @@
 		<%= f.text_field :name %>
 	</p>
 	<p>
-		<%= f.submit "Submit" %>
+		<%= f.submit "Submit",:disable_with => "..." %>
 		<input name="Back" type="button" value="Back" onClick="javascript:history.go(-1);"/>
 	</p>
 </fieldset>
