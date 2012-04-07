@@ -20,20 +20,20 @@ match.save
 (1..20).each do |number|
   match = Match.create(name: "Match Nbr: #{number}")
   User.all.each do |user|
-    if rand(1..3) != 2
+    if rand(3) != 2
       player = Player.new
       player.user = user
       player.match = match
       match.players << player
       user.players << player
       
-      if rand(0..1) == 1
+      if rand(2) == 1
         player.confirm = true
       else
         player.cancel = true
       end
       
-      if rand(0..3) == 2
+      if rand(3) == 2
         player.confirm = false
         player.cancel = false
       end
