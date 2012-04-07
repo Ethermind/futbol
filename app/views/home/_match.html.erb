@@ -1,0 +1,57 @@
+<% if @match.players.count > 0 %>
+	<fieldset>
+		<legend>
+			Current match: "<%= @match.name %>"
+			<%="(closed)" if @match.closed %>
+			, total players: <%= "#{@match.players.count}" %>
+		</legend>
+		<table border="0" cellspacing="0" cellpadding="0">
+			<thead>
+				<tr>
+					<th class="span-1">Position</th>
+					<th class="span-1">Score</th>
+					<th class="span-1">Name</th>
+					<th class="span-1">Status</th>
+					<% if @match.require_confirmation %>
+					<th class="span-3">Actions</th>
+					<% end %>
+				</tr>
+			</thead>
+			<tbody>
+			<% @players.each_with_index do |p, index| %>
+				<tr>
+					<td><%= index + 1 %></td>
+					<td><%= p.score.round(1) %></td>
+					<td><%= p.user.name %></td>
+					<td>
+						<% if p.confirm %> 
+							<div class= "button icon approve" />
+						<% end %>
+						<% if p.cancel %> 
+							<div class= "button icon remove" />
+						<% end %>
+						<% if !p.confirm && !p.cancel %> 
+							<div class= "button">NEW</div>
+						<% end %>
+					</td>
+					<%if @match.require_confirmation %>
+					<td>
+					<% if (!p.confirm && !p.cancel && @user && !@user.admin? && p.user == @user) || (@user && @user.admin?) %>
+						<div class="button-group">
+							<%= link_to "Confirm", home_confirm_player_to_match_path(:player => p), class: "button icon approve" if @user && !p.confirm %>
+							<%= link_to "Cancel", home_cancel_player_to_match_path(:player => p), class: "button danger icon remove" if @user && !p.cancel %>
+						</div>
+					<% end %>
+					</td>
+					<% end %>
+				</tr>
+			<% end %>
+			</tbody>
+		</table>
+	</fieldset>
+<% else %>
+	<h4>
+		Current match: "<%= @match.name %>"
+		<%="(closed)" if @match.closed %>
+	</h4>
+<% end %>

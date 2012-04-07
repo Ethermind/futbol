@@ -26,8 +26,13 @@ a, [type=submit], [type=button], button {
 .backwhite{
  background-color: $white;
 }
+
+.red{
+ background-color: red;
+}
+
 .shade {
- height: 42px;
- background: #3A3A3A url(global-sprite.png) repeat-x scroll 0 -19px;
+ height: 62px;
+ background: #3A3A3A;
 }
 

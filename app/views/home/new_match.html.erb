@@ -1,15 +1,19 @@
-<%= form_for @match, :url => matches_new_match_path(@match) do |f| %>
-<fieldset>
-	<legend>New Match</legend>
-	<p>
-		<%= f.label :name %> <br /> 
-		<%= f.text_field :name %>
-	</p>
-	<p>
-		<%= f.submit "Submit",:disable_with => "..." %>
-	</p>
-</fieldset>
-<% end %>
+<div class="span-3">&nbsp;</div>
+<div class="span-18">
+	<%= form_for @match, :url => matches_new_match_path(@match) do |f| %>
+	<fieldset>
+		<legend>New Match</legend>
+		<p>
+			<%= f.label :name %> <br /> 
+			<%= f.text_field :name %>
+		</p>
+		<p>
+			<%= f.submit "Submit",:disable_with => "..." %>
+		</p>
+	</fieldset>
+	<% end %>
+</div>
+<div class="span-3 last">&nbsp;</div>
 <script language="javascript">
 $(document).ready(function() {
   $('#match_name').focus();

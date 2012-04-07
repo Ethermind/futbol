@@ -39,5 +39,6 @@ class UsersController < ApplicationController
     @users = User.all
     @user = SessionBag.get_current_user(session)
     @match = Match.last
+    @player = @user.players.find_by_match_id(Match.last.id)    
   end
 end

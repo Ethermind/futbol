@@ -1,4 +1,3 @@
-<div class="span-24">
 <div class="button-container">
 	<div class="button-group minor-group">
 		<%= link_to "Home", home_index_path, class: "button pill icon home" %>
@@ -13,5 +12,4 @@
 		<%= link_to "Add me to Match!", home_add_user_to_match_path, class: "button pill" if !@match.closed && @user && @user.name != nil && !@player %>
 		<%= link_to "[#{@user.name}]", home_edit_user_path(:user => @user.id), class: "button pill icon user" if @user && @user.name != nil %>
 	</div>
-</div>
 </div>

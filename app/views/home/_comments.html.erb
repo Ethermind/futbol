@@ -1,0 +1,26 @@
+<% if @match.comments.count != 0 || @user %>
+	<fieldset class="notice">
+<% end %>
+<% if @match.comments.count != 0 %>
+	<% @match.comments.each_with_index do |c, index| %>
+		<strong><%= c.message %></strong>
+		<br />
+		<small><strong><em><%= c.user.name %></em></strong> | <%= c.created_at %></small>
+		<% if index <= (@match.comments.count - 2) %>
+			<br />&nbsp;<hr/>
+		<% end %>
+	<% end %>
+<% end %>
+<% if @user %>
+	<% if @match.comments.count != 0 %>
+		<br />&nbsp;<hr/>
+	<% end %>
+	<%= form_for @comment, :url => home_add_comment_to_match_path do |f| %>
+		<%= f.text_area :message, :class => "span-17", :rows=>"1" %>
+		<br />
+		<%= f.submit "Add comment", :disable_with => "..." %>
+	<% end %>
+<% end %>
+<% if @match.comments.count != 0 || @user %>
+	</fieldset>
+<% end %>
