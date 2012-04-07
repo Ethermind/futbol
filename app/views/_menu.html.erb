@@ -1,0 +1,17 @@
+<div class="span-24">
+<div class="button-container">
+	<div class="button-group minor-group">
+		<%= link_to "Home", home_index_path, class: "button pill icon home" %>
+		<%= link_to "Login", home_login_path, class: "button pill" if !@user || (@user && @user.name == nil) %>
+		<%= link_to "Signup", home_signup_path, class: "button pill" if !@user || (@user && @user.name == nil) %> 
+		<%= link_to "Logout", home_logout_path, class: "button pill" if @user && @user.name != nil %>
+		<%= link_to "About", home_about_path, class: "button pill" %>
+		<%= mail_to "luis.capra@gmail.com", "Feedback", :encode => "javascript", class: "button pill icon mail" if @user && @user.name != nil %>			
+		<%= link_to "Users", users_list_path, class: "button pill" if @user && @user.admin? %>
+		<%= link_to "New Match", home_new_match_path, class: "button pill" if @user && @user.admin? %>
+		<%= link_to "Edit Match", home_edit_match_path(:match => @match.id), class: "button pill" if @user && @user.admin? %>
+		<%= link_to "Add me to Match!", home_add_user_to_match_path, class: "button pill" if !@match.closed && @user && @user.name != nil && !@player %>
+		<%= link_to "[#{@user.name}]", home_edit_user_path(:user => @user.id), class: "button pill icon user" if @user && @user.name != nil %>
+	</div>
+</div>
+</div>

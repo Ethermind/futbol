@@ -1,25 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>La Cancha de tu hermana!</title>
-	<%= stylesheet_link_tag    "application", :media => "all" %>
-  	<%= javascript_include_tag "application" %>
-	<link rel=”stylesheet” href=”stylesheets/blueprint/screen.css” type=”text/css” media=”screen, projection”>
-	<link rel=”stylesheet” href=”stylesheets/blueprint/print.css” type=”text/css” media=”print”>
-	<!–[if IE]><link rel=”stylesheet” href=”stylesheets/blueprint/ie.css” type=”text/css” media=”screen, projection”><![endif]–>
+	<title>La cancha de tu hermana!</title>
+	<%= stylesheet_link_tag "application", :media => "all" %>
+	<%= stylesheet_link_tag "screen", :media => "screen, projection" %>
+	<%= stylesheet_link_tag "print", :media => "print" %>
+	<!–[if IE]><%= stylesheet_link_tag "ie", :media => "screen, projection" %><![endif]–>
 	<%= csrf_meta_tags %>
+  	<%= javascript_include_tag "application" %>
 </head>
 <body>
-	<div class="container success">
-		<h1>Futbol</h1>
-	</div>
+	<table class="backgreen shade">
+		<tr>
+			<td>
+				<h2>La cancha de tu hermana!</h2>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<%= render "/menu" %> 				
+			</td>
+		</tr>
+	</table>
+
 	<% if SessionBag.get_error(flash) %>
-    <div class="container error">
-      <%= SessionBag.get_error(flash) %>
-    </div>
+		<div class="container error">
+			<%= SessionBag.get_error(flash) %>
+    	</div>
 	<% end %>
 	<div class="container">
-		<%= yield %>
+		<div class="prepend-top append-bottom span-24 last backwhite shadow">			
+			<%= yield %>
+		</div>
 	</div>
 </body>
 </html>

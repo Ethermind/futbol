@@ -1,15 +1,3 @@
-<div class="span-24 last">
-	<%= link_to "[#{@user.name}]", home_edit_user_path(:user => @user.id) if @user %>
-	<%= link_to "Login", :controller => "home", :action => "login" if !@user %>
-	<%= link_to "Signup", :controller => "home", :action => "signup" if !@user %> 
-	<%= link_to "Logout", :controller => "home", :action => "logout" if @user %>
-	<%= link_to "About", :controller => "home", :action => "about" %>
-	<%= mail_to "luis.capra@gmail.com", "Feedback", :encode => "javascript" if @user && !@user.admin? %>			
-	<%= link_to "Users", users_list_path if @user && @user.admin? %>
-	<%= link_to "New Match", :controller => "home", :action => "new_match" if @user && @user.admin? %>
-</div>
-<br />
-<br />
 <% if @match %>
 <table border="0" cellspacing="0" cellpadding="0">
 	<caption>
@@ -17,10 +5,8 @@
 			Current match: "<b><%= @match.name %></b>"
 			<%="(closed)" if @match.closed %>
 		</em>
-		<br />
-		<%= link_to "Add me!", :controller => "home", :action => "add_user_to_match" if !@match.closed && @user && !@player %>
-		<%= link_to "Edit", home_edit_match_path(:match => @match.id) if @user && @user.admin? %>
 	</caption>
+	<% if @match.players.count > 0 %>
 	<thead>
 		<tr>
 			<th class="span-4">Position</th>
@@ -37,6 +23,7 @@
 			<td colspan="2">Total: <%= "#{@match.players.count}" %></td>
 		</tr>
 	</tfoot>
+	<% end %>
 	<tbody>
 		<% @players.each_with_index do |p, index| %>
 		<tr>
@@ -44,15 +31,23 @@
 			<td><%= p.score.round(1) %></td>
 			<td><%= p.user.name %></td>
 			<td>
-				<%= "CONFIRMED" if p.confirm %> 
-				<%= "CANCELLED" if p.cancel %> 
-				<%= "NEW" if !p.confirm && !p.cancel %> 
+				<% if p.confirm %> 
+					<div class= "button icon approve" />
+				<% end %>
+				<% if p.cancel %> 
+					<div class= "button icon remove" />
+				<% end %>
+				<% if !p.confirm && !p.cancel %> 
+					<div class= "button">NEW</div>
+				<% end %>
 			</td>
 			<%if @match.require_confirmation %>
 			<td>
 				<% if (!p.confirm && !p.cancel && @user && !@user.admin? && p.user == @user) || (@user && @user.admin?) %>
-				<%= link_to "Confirm", home_confirm_player_to_match_path(:player => p) if @user && !p.confirm %>
-				<%= link_to "Cancel", home_cancel_player_to_match_path(:player => p) if @user && !p.cancel %>
+					<div class="button-group">
+						<%= link_to "Confirm", home_confirm_player_to_match_path(:player => p), class: "button icon approve" if @user && !p.confirm %>
+						<%= link_to "Cancel", home_cancel_player_to_match_path(:player => p), class: "button danger icon remove" if @user && !p.cancel %>
+					</div>
 				<% end %>
 			</td>
 			<% end %>
@@ -61,25 +56,31 @@
 	</tbody>
 </table>
 <% end %>
-<br />
-<% if @match && @match.comments %>
-	<% @match.comments.each do |c| %>
-	<fieldset class = "notice">
-		<strong><%= c.message %></strong>
-		<br />
-		<small><%= c.user.name %> | <%= c.created_at %></small>
-	</fieldset>
+<% if @match %>
+	<% if @match.comments.count != 0 || @user %>
+		<fieldset class = "notice">
 	<% end %>
-<% end %>
-<% if @match && @user %>
-	<%= form_for @comment, :url => home_add_comment_to_match_path do |f| %>
-	<fieldset class="notice">
-		<p>
+	<% if @match.comments.count != 0 %>
+		<% @match.comments.each_with_index do |c, index| %>
+			<strong><%= c.message %></strong>
+			<br />
+			<small><strong><em><%= c.user.name %></em></strong> | <%= c.created_at %></small>
+			<% if index <= (@match.comments.count - 2) %>
+				<br />&nbsp;<hr/>
+			<% end %>
+		<% end %>
+	<% end %>
+	<% if @user %>
+		<% if @match.comments.count != 0 %>
+			<br />&nbsp;<hr/>
+		<% end %>
+		<%= form_for @comment, :url => home_add_comment_to_match_path do |f| %>
 			<%= f.text_area :message, :class => "span-23" %>
-		</p>
-		<p>
+			<br />
 			<%= f.submit "Add comment", :disable_with => "..." %>
-		</p>
-	</fieldset>
+		<% end %>
+	<% end %>
+	<% if @match.comments.count != 0 || @user %>
+		</fieldset>
 	<% end %>
 <% end %>

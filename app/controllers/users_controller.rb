@@ -37,5 +37,7 @@ class UsersController < ApplicationController
   
   def list
     @users = User.all
+    @user = SessionBag.get_current_user(session)
+    @match = Match.last
   end
 end

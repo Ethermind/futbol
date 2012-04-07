@@ -11,6 +11,7 @@ class HomeController < ApplicationController
   
   def login
     @user = User.new
+    @match = Match.last
   end
   
   def logout
@@ -20,9 +21,12 @@ class HomeController < ApplicationController
   
   def signup
     @user = User.new
+    @match = Match.last
   end
   
   def about
+    @user = SessionBag.get_current_user(session)
+    @match = Match.last
   end
   
   def add_user_to_match
@@ -51,14 +55,17 @@ class HomeController < ApplicationController
 
   def new_match
     @match = Match.new
+    @user = SessionBag.get_current_user(session)
   end
   
   def edit_match
-    @match = Match.find(params[:match])
+    @match = Match.last #find(params[:match])
+    @user = SessionBag.get_current_user(session)
   end
 
   def edit_user
     @user = User.find(params[:user])
+    @match = Match.last
   end
 
   def add_comment_to_match
