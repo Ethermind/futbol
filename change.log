@@ -13,6 +13,8 @@ DONE -> 2 digits for users
 DONE -> Un usuario puede ingresar uno o mas comentarios a un partido
 DONE -> Fieldset en todos los forms
 DONE -> look and feel - second phase
+DONE -> Score chart
+DONE -> Google Analytics - Test phase 1
 ------------------------------------------------------------------------------------------------------------------------
 user name should be lower case without spaces
 El SessionBag deberia ser un accessor del ApplicationController
