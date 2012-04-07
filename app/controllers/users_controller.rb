@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_filter :require_admin
   skip_before_filter :require_login, :only => [:create, :login]
-  skip_before_filter :require_admin, :only => [:create, :login, :update]
+  skip_before_filter :require_admin, :only => [:create, :login, :update, :scores]
   
   def create
     user = User.new(params[:user])
@@ -36,6 +36,13 @@ class UsersController < ApplicationController
   end
   
   def list
+    @users = User.all
+    @user = SessionBag.get_current_user(session)
+    @match = Match.last
+    @player = @user.players.find_by_match_id(Match.last.id)    
+  end
+  
+  def scores
     @users = User.all
     @user = SessionBag.get_current_user(session)
     @match = Match.last

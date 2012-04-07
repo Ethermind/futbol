@@ -32,4 +32,15 @@ class User < ActiveRecord::Base
       0 
     end
   end
+  
+  def scores
+    scores = []
+    self.players.each do |p|
+      v = []
+      v << p.match.id
+      v << p.score.to_f
+      scores << v
+    end
+    scores
+  end
 end

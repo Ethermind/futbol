@@ -8,20 +8,43 @@
 
 match = Match.create(name: "DEMO MATCH")
 user = User.create(name: "admin", email: "luis.capra@gmail.com", password: "admin")
-User.create(name: "testuser0", email: "testuser0@mail.com", password: "test")
-User.create(name: "testuser1", email: "testuser1@mail.com", password: "test")
-User.create(name: "testuser2", email: "testuser2@mail.com", password: "test")
-User.create(name: "testuser3", email: "testuser3@mail.com", password: "test")
-User.create(name: "testuser4", email: "testuser4@mail.com", password: "test")
-User.create(name: "testuser5", email: "testuser5@mail.com", password: "test")
-User.create(name: "testuser6", email: "testuser6@mail.com", password: "test")
-User.create(name: "testuser7", email: "testuser7@mail.com", password: "test")
-User.create(name: "testuser8", email: "testuser8@mail.com", password: "test")
-User.create(name: "testuser9", email: "testuser9@mail.com", password: "test")
+(1..9).each do |code|
+  User.create(name: "testuser#{code}", email: "testuser#{code}@mail.com", password: "test")
+end
 comment = Comment.new(message: "Hello my friend", user: user, match: match)
 match.comments << comment
 user.comments << comment
 match.save
+
+# extended example to show statistics
+(1..20).each do |number|
+  match = Match.create(name: "Match Nbr: #{number}")
+  User.all.each do |user|
+    if rand(1..3) != 2
+      player = Player.new
+      player.user = user
+      player.match = match
+      match.players << player
+      user.players << player
+      
+      if rand(0..1) == 1
+        player.confirm = true
+      else
+        player.cancel = true
+      end
+      
+      if rand(0..3) == 2
+        player.confirm = false
+        player.cancel = false
+      end
+      
+      player.score = user.score # that logic should be in Player class
+      player.save
+    end
+  end
+  match.closed = true
+  match.save
+end
 
 
 

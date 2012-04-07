@@ -7,6 +7,7 @@
 		<%= link_to "About", home_about_path, class: "button pill" %>
 		<%= mail_to "luis.capra@gmail.com", "Feedback", :encode => "javascript", class: "button pill icon mail" if @user && @user.name != nil %>			
 		<%= link_to "Users", users_list_path, class: "button pill" if @user && @user.admin? %>
+		<%= link_to "Scores", users_scores_path, class: "button pill" if @user && @user.name != nil %>
 		<%= link_to "New Match", home_new_match_path, class: "button pill" if @user && @user.admin? %>
 		<%= link_to "Edit Match", home_edit_match_path(:match => @match.id), class: "button pill" if @user && @user.admin? %>
 		<%= link_to "Add me to Match!", home_add_user_to_match_path, class: "button pill" if !@match.closed && @user && @user.name != nil && !@player %>

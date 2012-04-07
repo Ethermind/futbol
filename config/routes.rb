@@ -14,6 +14,7 @@ Futbol::Application.routes.draw do
   get "home/edit_user"
   get "home/add_comment_to_match"
   get "users/list"
+  get "users/scores"
 
   match "users/login", :to => "users#login"
   match "matches/new_match", :to => "matches#new_match"

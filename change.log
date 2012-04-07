@@ -12,10 +12,15 @@ DONE -> look and feel - first phase
 DONE -> 2 digits for users
 DONE -> Un usuario puede ingresar uno o mas comentarios a un partido
 DONE -> Fieldset en todos los forms
+DONE -> look and feel - second phase
 ------------------------------------------------------------------------------------------------------------------------
+user name should be lower case without spaces
 El SessionBag deberia ser un accessor del ApplicationController
 login por username o email
 La session del usuario deberia expirar a los 15 minutos de inactividad
+change webserver
+multilanguage support
+change home when no user is a player
 ------------------------------------------------------------------------------------------------------------------------
 REGRESSION TEST
 ------------------------------------------------------------------------------------------------------------------------
