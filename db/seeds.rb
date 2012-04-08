@@ -4,7 +4,7 @@
 
 user = User.create(name: "admin", email: "luis.capra@gmail.com", password: "admin")
 
-if false
+if true #false
 match = Match.create(name: "DEMO MATCH")
 
 (1..9).each do |code|
