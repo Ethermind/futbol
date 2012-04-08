@@ -1,6 +1,6 @@
 <div class="span-3">&nbsp;</div>
 <div class="span-18">
-	<%= form_for @user, :url => users_login_path(@user) do |f| %>
+	<%= form_for @user, url: users_login_path(@user) do |f| %>
 	<fieldset>
 		<legend>Login</legend>
 		<p>
@@ -12,7 +12,7 @@
 			<%= f.password_field :password %>
 		</p>
 		<p>
-			<%= f.submit "Submit", :disable_with => "..." %>
+			<%= f.submit "Submit", disable_with: "..." %>
 		</p>
 	</fieldset>
 	<% end %>

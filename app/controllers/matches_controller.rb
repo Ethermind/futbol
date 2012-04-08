@@ -18,6 +18,10 @@ class MatchesController < ApplicationController
       SessionBag.set_error(flash, match.errors.first[1])
     end
   
+    if match.closed
+      Match.close(match)
+    end
+  
     redirect_to root_url
   end
 end

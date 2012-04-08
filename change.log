@@ -16,6 +16,9 @@ DONE -> look and feel - second phase
 DONE -> Score chart
 DONE -> Google Analytics - Test phase 1
 DONE -> Fixed bug when no match exists
+DONE -> Score System Fixed - A predictable way has been included
+DONE -> Some refactorings and optimizations
+DONE -> Change home when no user is a player
 ------------------------------------------------------------------------------------------------------------------------
 user name should be lower case without spaces
 El SessionBag deberia ser un accessor del ApplicationController
@@ -23,7 +26,6 @@ login por username o email
 La session del usuario deberia expirar a los 15 minutos de inactividad
 change webserver
 multilanguage support
-change home when no user is a player
 ------------------------------------------------------------------------------------------------------------------------
 REGRESSION TEST
 ------------------------------------------------------------------------------------------------------------------------

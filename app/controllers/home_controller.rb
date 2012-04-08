@@ -5,7 +5,7 @@ class HomeController < ApplicationController
     @user = SessionBag.get_current_user(session)
     @match = Match.last
     @player = @match.players.find_by_user_id(@user.id) if @user && @match
-    @players = Player.find(:all, :conditions => ["match_id = ?", @match.id], :order => "score desc") if @match
+    @players = Player.find(:all, conditions: ["match_id = ?", @match.id], order: "score desc") if @match
     @comment = Comment.new
   end
   
@@ -41,6 +41,8 @@ class HomeController < ApplicationController
     @user = SessionBag.get_current_user(session)
     @match = Match.last
     @player = @user.players.find_by_match_id(Match.last.id)
+    
+    redirect_to root_url if @match.closed
   end
 
   def edit_user
@@ -52,25 +54,18 @@ class HomeController < ApplicationController
   def add_user_to_match
     match = Match.last
     user = SessionBag.get_current_user(session)
-
-    if !Player.find_by_user_id_and_match_id(user.id, match.id)
-      player = Player.new
-      player.user = user
-      player.score = user.score
-      user.players << player
-      match.players << player
-      match.save
-    end
-    
+    Player.add_to_match(Player.new, user, match)
     redirect_to root_url
   end
   
   def confirm_player_to_match
-    set_player_confirmation(Player.find(params[:player]), true)
+    Player.do_confirm(Player.find(params[:player]))
+    redirect_to root_url
   end
   
   def cancel_player_to_match
-    set_player_confirmation(Player.find(params[:player]), false)
+    Player.do_cancel(Player.find(params[:player]))
+    redirect_to root_url
   end
 
   def add_comment_to_match
@@ -79,21 +74,10 @@ class HomeController < ApplicationController
     comment = Comment.new(params[:comment])
     comment.match = match
     comment.user = user
-    match.comments << comment
-    user.comments << comment
-    
+
     if !comment.save
       SessionBag.set_error(flash, comment.errors.first[1])
     end
-    
-    redirect_to root_url
-  end
-  
-  private
-  def set_player_confirmation(player, status)
-    player.confirm = status
-    player.cancel = !status
-    player.save
     
     redirect_to root_url
   end

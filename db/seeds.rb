@@ -4,46 +4,44 @@
 
 user = User.create(name: "admin", email: "luis.capra@gmail.com", password: "admin")
 
-if true #false
-match = Match.create(name: "DEMO MATCH")
-
-(1..9).each do |code|
-  User.create(name: "testuser#{code}", email: "testuser#{code}@mail.com", password: "test")
-end
-comment = Comment.new(message: "Hello my friend", user: user, match: match)
-match.comments << comment
-user.comments << comment
-match.save
-
-# extended example to show statistics
-(1..20).each do |number|
-  match = Match.create(name: "Match Nbr: #{number}")
-  User.all.each do |user|
-    if rand(3) != 2
-      player = Player.new
-      player.user = user
-      player.match = match
-      match.players << player
-      user.players << player
-      
-      if rand(2) == 1
-        player.confirm = true
-      else
-        player.cancel = true
-      end
-      
-      if rand(3) == 2
-        player.confirm = false
-        player.cancel = false
-      end
-      
-      player.score = user.score # that logic should be in Player class
-      player.save
-    end
+if false
+  (1..10).each do 
+    match = Match.new(name: "DEMO MATCH")
+    player = Player.new
+    Player.add_to_match(player, user, match)
+    match.save
   end
-  match.closed = true
+end
+
+if false
+  match = Match.create(name: "DEMO MATCH")
+
+  (1..9).each do |code|
+    User.create(name: "testuser#{code}", email: "testuser#{code}@mail.com", password: "test")
+  end
+  
+  comment = Comment.new(message: "Hello my friend", user: user, match: match)
+  match.comments << comment
+  user.comments << comment
   match.save
 end
+
+if false
+  # extended example to show statistics
+  (1..20).each do |number|
+    match = Match.create(name: "Match Nbr: #{number}", require_confirmation: true)
+    User.all.each do |user|
+      if rand(3) != 2
+        player = Player.new
+        Player.add_to_match(player, user, match)
+        Player.do_confirm(player) if rand(2) == 1
+        Player.do_cancel(player) if rand(3) == 2
+      end
+    end
+  end
+
+  match.save
+  Match.close(match)
 end
 
 

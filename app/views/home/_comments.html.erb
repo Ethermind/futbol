@@ -15,10 +15,10 @@
 	<% if @match.comments.count != 0 %>
 		<br />&nbsp;<hr/>
 	<% end %>
-	<%= form_for @comment, :url => home_add_comment_to_match_path do |f| %>
-		<%= f.text_area :message, :class => "span-17", :rows=>"1" %>
+	<%= form_for @comment, url: home_add_comment_to_match_path do |f| %>
+		<%= f.text_area :message, class: "span-17" %>
 		<br />
-		<%= f.submit "Add comment", :disable_with => "..." %>
+		<%= f.submit "Add comment", disable_with: "..." %>
 	<% end %>
 <% end %>
 <% if @match.comments.count != 0 || @user %>
