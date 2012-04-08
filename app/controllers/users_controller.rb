@@ -27,7 +27,7 @@ class UsersController < ApplicationController
   
   def login
     user = User.new(params[:user])
-    user = User.find_by_name_and_password(user.name, user.password)
+    user = User.authenticate(user.name, user.password)
     
     SessionBag.set_current_user(session, user) if user
     SessionBag.set_error(flash, "login fail") if !user

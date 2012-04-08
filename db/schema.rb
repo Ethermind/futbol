@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120406194836) do
+ActiveRecord::Schema.define(:version => 20120408085134) do
 
   create_table "comments", :force => true do |t|
     t.integer  "match_id"
@@ -42,9 +42,10 @@ ActiveRecord::Schema.define(:version => 20120406194836) do
   create_table "users", :force => true do |t|
     t.string   "name"
     t.string   "email"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.string   "password"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.string   "password_salt"
+    t.string   "password_hash"
   end
 
 end

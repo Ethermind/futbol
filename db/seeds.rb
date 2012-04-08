@@ -4,7 +4,7 @@
 
 user = User.create(name: "admin", email: "luis.capra@gmail.com", password: "admin")
 
-if false
+if true #false
   (1..10).each do 
     match = Match.new(name: "DEMO MATCH")
     player = Player.new
@@ -13,7 +13,7 @@ if false
   end
 end
 
-if false
+if true #false
   match = Match.create(name: "DEMO MATCH")
 
   (1..9).each do |code|
@@ -26,7 +26,7 @@ if false
   match.save
 end
 
-if false
+if true #false
   # extended example to show statistics
   (1..20).each do |number|
     match = Match.create(name: "Match Nbr: #{number}", require_confirmation: true)
@@ -43,6 +43,3 @@ if false
   match.save
   Match.close(match)
 end
-
-
-

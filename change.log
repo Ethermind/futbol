@@ -19,8 +19,15 @@ DONE -> Fixed bug when no match exists
 DONE -> Score System Fixed - A predictable way has been included
 DONE -> Some refactorings and optimizations
 DONE -> Change home when no user is a player
+DONE -> Encriptar password
+DONE -> Root user is the one with ID=1 instead of name="admin"
+DONE -> SECURITY FIX: email list is being shown encoded
+DONE -> MATCH CLOSED STATE FIXED
 ------------------------------------------------------------------------------------------------------------------------
-user name should be lower case without spaces
+BUGGED -> user name should be lower case without spaces
+REMOVE USER
+REMOVE COMMENT
+COMMENTS REFACTORING
 El SessionBag deberia ser un accessor del ApplicationController
 login por username o email
 La session del usuario deberia expirar a los 15 minutos de inactividad
@@ -29,7 +36,6 @@ multilanguage support
 ------------------------------------------------------------------------------------------------------------------------
 REGRESSION TEST
 ------------------------------------------------------------------------------------------------------------------------
-Encriptar password
 Poder ver partidas pasadas
 Notificaciones ante nuevo partido
 Notificaciones para confirmar
