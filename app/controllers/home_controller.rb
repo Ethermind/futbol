@@ -4,8 +4,8 @@ class HomeController < ApplicationController
   def index
     @user = SessionBag.get_current_user(session)
     @match = Match.last
-    @player = @match.players.find_by_user_id(@user.id) if @user
-    @players = Player.find(:all, :conditions => ["match_id = ?", @match.id], :order => "score desc")
+    @player = @match.players.find_by_user_id(@user.id) if @user && @match
+    @players = Player.find(:all, :conditions => ["match_id = ?", @match.id], :order => "score desc") if @match
     @comment = Comment.new
   end
   
@@ -22,19 +22,19 @@ class HomeController < ApplicationController
   def signup
     @user = User.new
     @match = Match.last
-    @player = @user.players.find_by_match_id(Match.last.id)
+    @player = @user.players.find_by_match_id(Match.last.id) if @match
   end
   
   def about
     @user = SessionBag.get_current_user(session)
     @match = Match.last
-    @player = @user.players.find_by_match_id(Match.last.id) if @user
+    @player = @user.players.find_by_match_id(Match.last.id) if @user && @match
   end
 
   def new_match
     @user = SessionBag.get_current_user(session)
     @match = Match.new
-    @player = @user.players.find_by_match_id(Match.last.id)
+    @player = @user.players.find_by_match_id(Match.last.id) if Match.last
   end
   
   def edit_match
@@ -46,7 +46,7 @@ class HomeController < ApplicationController
   def edit_user
     @user = User.find(params[:user])
     @match = Match.last
-    @player = @user.players.find_by_match_id(Match.last.id)
+    @player = @user.players.find_by_match_id(Match.last.id) if @match
   end
   
   def add_user_to_match

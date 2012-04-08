@@ -15,6 +15,7 @@ DONE -> Fieldset en todos los forms
 DONE -> look and feel - second phase
 DONE -> Score chart
 DONE -> Google Analytics - Test phase 1
+DONE -> Fixed bug when no match exists
 ------------------------------------------------------------------------------------------------------------------------
 user name should be lower case without spaces
 El SessionBag deberia ser un accessor del ApplicationController
