@@ -25,9 +25,11 @@ DONE -> SECURITY FIX: email list is being shown encoded
 DONE -> MATCH CLOSED STATE FIXED
 ------------------------------------------------------------------------------------------------------------------------
 BUGGED -> user name should be lower case without spaces
+BUGGED -> Scores sorting in heroku!
 REMOVE USER
 REMOVE COMMENT
 COMMENTS REFACTORING
+RSPEC!
 El SessionBag deberia ser un accessor del ApplicationController
 login por username o email
 La session del usuario deberia expirar a los 15 minutos de inactividad
