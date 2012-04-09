@@ -23,6 +23,8 @@ DONE -> Encriptar password
 DONE -> Root user is the one with ID=1 instead of name="admin"
 DONE -> SECURITY FIX: email list is being shown encoded
 DONE -> MATCH CLOSED STATE FIXED
+DONE -> SECURITY FIX: PRD environment runs with https
+DONE -> Actions column fixed
 ------------------------------------------------------------------------------------------------------------------------
 BUGGED -> user name should be lower case without spaces
 BUGGED -> Scores sorting in heroku!

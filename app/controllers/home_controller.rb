@@ -7,6 +7,7 @@ class HomeController < ApplicationController
     @player = @match.players.find_by_user_id(@user.id) if @user && @match
     @players = Player.find(:all, conditions: ["match_id = ?", @match.id], order: "score desc") if @match
     @comment = Comment.new
+    @show_actions_column = @match.require_confirmation && !@match.closed
   end
   
   def login
