@@ -1513,23 +1513,6 @@ defaultOptions = {
 		//valueDecimals: null,
 		//valuePrefix: '',
 		//valueSuffix: ''
-	},
-
-	credits: {
-		enabled: true,
-		text: 'Highcharts.com',
-		href: 'http://www.highcharts.com',
-		position: {
-			align: 'right',
-			x: -10,
-			verticalAlign: 'bottom',
-			y: -5
-		},
-		style: {
-			cursor: 'pointer',
-			color: '#909090',
-			fontSize: '10px'
-		}
 	}
 };
 
