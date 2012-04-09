@@ -25,6 +25,7 @@ DONE -> SECURITY FIX: email list is being shown encoded
 DONE -> MATCH CLOSED STATE FIXED
 DONE -> SECURITY FIX: PRD environment runs with https
 DONE -> Actions column fixed
+DONE -> highcharts not minified, minification will done in prd env
 ------------------------------------------------------------------------------------------------------------------------
 BUGGED -> user name should be lower case without spaces
 BUGGED -> Scores sorting in heroku!
