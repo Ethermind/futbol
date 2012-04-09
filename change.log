@@ -26,25 +26,27 @@ DONE -> MATCH CLOSED STATE FIXED
 DONE -> SECURITY FIX: PRD environment runs with https
 DONE -> Actions column fixed
 DONE -> highcharts not minified, minification will done in prd env
+DONE -> Scores sorting in heroku!
+DONE -> HTML fix for W3C compatibility!
 ------------------------------------------------------------------------------------------------------------------------
+FIX -> UI display of intentional added too long single line comment
 BUGGED -> user name should be lower case without spaces
-BUGGED -> Scores sorting in heroku!
 REMOVE USER
 REMOVE COMMENT
 COMMENTS REFACTORING
 RSPEC!
-El SessionBag deberia ser un accessor del ApplicationController
+El SessionBag deberia ser un accessor / helper del ApplicationController
 login por username o email
 La session del usuario deberia expirar a los 15 minutos de inactividad
 change webserver
 multilanguage support
+Notificaciones ante nuevo partido
+Notificaciones para confirmar
+Notificaciones cuando se cierra la inscripcion y confirmacion
 ------------------------------------------------------------------------------------------------------------------------
 REGRESSION TEST
 ------------------------------------------------------------------------------------------------------------------------
 Poder ver partidas pasadas
-Notificaciones ante nuevo partido
-Notificaciones para confirmar
-Notificaciones cuando se cierra la inscripcion y confirmacion
 ------------------------------------------------------------------------------------------------------------------------
 http://www.ajaxbestiary.com/Labs/SilkSprite/
 https://github.com/joshuaclayton/blueprint-css/wiki/Plugins
@@ -54,7 +56,6 @@ Los estados deberian ser iconos graficos
 Poner Unicorn: http://michaelvanrooijen.com/articles/2011/06/01-more-concurrency-on-a-single-heroku-dyno-with-the-new-celadon-cedar-stack/
 Estrategia de caching
 Un usuario deberia poder subir su foto
-
 http://stormy-earth-7600.herokuapp.com <http://stormy-earth-7600.herokuapp.com/> 
 - Las reglas deberían estar publicadas
 - Current match debería indicar la fecha, hora y lugar

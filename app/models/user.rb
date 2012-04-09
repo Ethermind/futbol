@@ -48,7 +48,7 @@ class User < ActiveRecord::Base
   
   def scores
     scores = []
-    self.players.each do |p|
+    self.players.order(:match_id).each do |p|
       v = []
       v << p.match.id
       v << p.score.to_f
