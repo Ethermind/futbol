@@ -28,6 +28,7 @@ DONE -> Actions column fixed
 DONE -> highcharts not minified, minification will done in prd env
 DONE -> Scores sorting in heroku!
 DONE -> HTML fix for W3C compatibility!
+DONE -> HTML5 compatible
 ------------------------------------------------------------------------------------------------------------------------
 FIX -> UI display of intentional added too long single line comment
 BUGGED -> user name should be lower case without spaces
