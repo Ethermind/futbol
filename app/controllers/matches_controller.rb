@@ -5,7 +5,7 @@ class MatchesController < ApplicationController
     match = Match.new(params[:match])
   
     if !match.save
-      SessionBag.set_error(flash, match.errors.first[1])
+      flash[:error] = match.errors.first[1]
     end
   
     redirect_to root_url
@@ -15,7 +15,7 @@ class MatchesController < ApplicationController
     match = Match.find(params[:id])
   
     if !match.update_attributes(params[:match])
-      SessionBag.set_error(flash, match.errors.first[1])
+      flash[:error] = match.errors.first[1]
     end
   
     if match.closed

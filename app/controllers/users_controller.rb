@@ -7,9 +7,9 @@ class UsersController < ApplicationController
     user = User.new(params[:user])
 
     if user.save
-      SessionBag.set_current_user(session, user)
+      set_current_user(user)
     else
-      SessionBag.set_error(flash, user.errors.first[1])
+      flash[:error] = user.errors.first[1]
     end
 
     redirect_to root_url
@@ -19,7 +19,7 @@ class UsersController < ApplicationController
     user = User.find(params[:id])
     
     if !user.update_attributes(params[:user])
-      SessionBag.set_error(flash, user.errors.first[1])
+      flash[:error] = user.errors.first[1]
     end
   
     redirect_to root_url
@@ -29,22 +29,22 @@ class UsersController < ApplicationController
     user = User.new(params[:user])
     user = User.authenticate(user.name, user.password)
     
-    SessionBag.set_current_user(session, user) if user
-    SessionBag.set_error(flash, "login fail") if !user
+    set_current_user(user) if user
+    flash[:error] = ("login fail") if !user
 
     redirect_to root_url
   end
   
   def list
     @users = User.all
-    @user = SessionBag.get_current_user(session)
+    @user = get_current_user
     @match = Match.last
     @player = @user.players.find_by_match_id(Match.last.id) if @match
   end
   
   def scores
     @users = User.all
-    @user = SessionBag.get_current_user(session)
+    @user = get_current_user
     @match = Match.last
     @player = @user.players.find_by_match_id(Match.last.id) if @match
   end

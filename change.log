@@ -29,16 +29,18 @@ DONE -> highcharts not minified, minification will done in prd env
 DONE -> Scores sorting in heroku!
 DONE -> HTML fix for W3C compatibility!
 DONE -> HTML5 compatible
+DONE -> La lista se debe ordenar tambien por fecha de creacion
+DONE -> user name should be lower case without spaces
+DONE -> La session del usuario deberia expirar a los 15 minutos de inactividad
+DONE -> Edit match should validate lenght of :name
 ------------------------------------------------------------------------------------------------------------------------
 FIX -> UI display of intentional added too long single line comment
-BUGGED -> user name should be lower case without spaces
 REMOVE USER
 REMOVE COMMENT
 COMMENTS REFACTORING
 RSPEC!
 El SessionBag deberia ser un accessor / helper del ApplicationController
 login por username o email
-La session del usuario deberia expirar a los 15 minutos de inactividad
 change webserver
 multilanguage support
 Notificaciones ante nuevo partido
