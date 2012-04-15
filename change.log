@@ -33,19 +33,23 @@ DONE -> La lista se debe ordenar tambien por fecha de creacion
 DONE -> user name should be lower case without spaces
 DONE -> La session del usuario deberia expirar a los 15 minutos de inactividad
 DONE -> Edit match should validate lenght of :name
+DONE -> subject included in feedback
+DONE -> add_comment_to_match fix when session expires
+
 ------------------------------------------------------------------------------------------------------------------------
+FIX -> seeds.rb is not creating tests users because it doesnt support user's numbers
 FIX -> UI display of intentional added too long single line comment
+
+Notificaciones ante nuevo partido: http://guides.rubyonrails.org/action_mailer_basics.html
+Notificaciones para confirmar
+Notificaciones cuando se cierra la inscripcion y confirmacion
+------------------------------------------------------------------------------------------------------------------------
 REMOVE USER
 REMOVE COMMENT
 COMMENTS REFACTORING
 RSPEC!
-El SessionBag deberia ser un accessor / helper del ApplicationController
-login por username o email
 change webserver
 multilanguage support
-Notificaciones ante nuevo partido
-Notificaciones para confirmar
-Notificaciones cuando se cierra la inscripcion y confirmacion
 ------------------------------------------------------------------------------------------------------------------------
 REGRESSION TEST
 ------------------------------------------------------------------------------------------------------------------------
